@@ -1,0 +1,34 @@
+Name<input type="text" [(ngModel)]="bill.product" /><br />
+Price<input type="text" [(ngModel)]="bill.price" /><br />
+Qty<input type="text" [(ngModel)]="bill.quantity" /><br />
+Discount<input type="text" [(ngModel)]="bill.discount" /><br />
+
+<button (click)="onAdd()">Add item</button>
+
+<div *ngIf="billlist.length===0">
+    No items added
+</div>
+
+<table *ngIf="billlist.length>0">
+    <tr>
+        <td>product</td>
+        <td>Rate</td>
+        <td>quantity</td>
+        <td>discount</td>
+        <td>Price</td>
+    </tr>
+    <tr *ngFor="let b of billlist">
+        <td>{{b.product}}</td>
+        <td>{{b.price}}</td>
+        <td>{{b.quantity}}</td>
+        <td>{{b.discount}}</td>
+        <td>{{b.price*b.quantity-b.discount}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>{{calcTotal()}}</td>
+    </tr>
+</table>
